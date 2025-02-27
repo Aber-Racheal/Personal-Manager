@@ -16,7 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from task_manager import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('create/', views.CreatingTask, name = 'CreatingTask'),
+    path('tasks/', views.TaskList, name='TaskList'),
+    path('trash/', views.TrashList, name='TrashList'),
+    path('tasks/delete/<int:task_id>/', views.DeleteTask, name='DeleteTask'),
+    path('trash/restore/<int:task_id>/', views.RestoreTask, name='RestoreTask'),
+    path('trash/delete_permanently/<int:task_id>/', views.DeletePermanently, name='DeletePermanently'),
+    path('task/<int:id>/', views.ViewTask, name='ViewTask'),
+    path('task/<int:id>/edit/', views.EditTask, name='EditTask'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

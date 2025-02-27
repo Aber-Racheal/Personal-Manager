@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>View Task</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/general.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/task_list.css' %}">
+   
+</head>
+
+<body>
+
+    <h2>{{ task.task_title }}</h2>
+    <p><strong>Description:</strong> {{ task.task_description }}</p>
+    <p><strong>Status:</strong> {{ task.get_task_status_display }}</p>
+    <p><strong>Deadline:</strong> {{ task.task_deadline }}</p>
+    <img src="{{ task.task_image.url }}" alt="{{ task.task_title }}" width="100">
+    
+    <br><br>
+
+    <!-- Edit and Delete links -->
+    <a href="{% url 'EditTask' task.id %}" class="btn">Edit Task</a>
+    <form method="POST" action="{% url 'DeleteTask' task.id %}" onsubmit="return confirmDelete()">
+        {% csrf_token %}
+        <button type="submit" class="btn">Delete Task</button>
+    </form>
+    
+    <br><br>
+    <a href="{% url 'TaskList' %}">Back to Task List</a>
+
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this task?");
+        }
+    </script>
+
+</body>
+</html>

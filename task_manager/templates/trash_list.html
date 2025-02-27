@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash</title>
+</head>
+<body>
+    <h2>Trash</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <img src="{{ task.task_image }}" alt="{{ task.task_title }}" width="100"><br>
+                {{ task.name }} <br> {{ task.task_deadline }}
+                <!-- Restore Task Button -->
+                <form method="POST" action="{% url 'RestoreTask' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="restore_btn">Restore</button>
+                </form>
+                <!-- Delete Permanently Button -->
+                <form method="POST" action="{% url 'DeletePermanently' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete Permanently</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

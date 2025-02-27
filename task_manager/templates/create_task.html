@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            TASK MANAGER
+        </title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/general.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/create_task.css' %}">
+     
+    </head>
+    
+<body>
+        <h2>Create a Task</h2>
+       <!-- create_task.html -->
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- This will render the form fields as paragraph tags -->
+    
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+    <li class="message">{{ message }}</li>
+        {% endfor %}
+
+    </ul>
+    {% endif %}
+
+    {% for field in form %}
+    {% if field.errors %}
+    <div class="field-errors">
+        {% for error in field.errors %}
+        <p>{{ error }}</p>
+    </div>
+        {% endfor%}
+    {% endif %}
+    {% endfor %}
+
+    <button type="submit">Create Task</button>
+</form>
+</body> 
+</html>    

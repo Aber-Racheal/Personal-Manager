@@ -1,0 +1,9 @@
+.message{
+    color: red;
+    font-weight: bold;
+}
+
+.field-errors{
+    color: red;
+    font-weight: bold;
+}

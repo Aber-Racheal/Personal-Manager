@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Deletion</title>
+</head>
+<body>
+    <h2>Are you sure you want to move "{{ task.name }}" to trash?</h2>
+    
+    <!-- If the user clicks "Yes", the task will be moved to trash -->
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, move to trash</button>
+    </form>
+
+    <!-- If the user clicks "No", they are redirected back to the Task List -->
+    <a href="{% url 'TaskList' %}">No, keep task</a>
+</body>
+</html>
