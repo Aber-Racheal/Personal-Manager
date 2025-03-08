@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            TASK MANAGER
+        </title>
+        {% load static %}
+     
+    </head>
+    <h2>My Digital Vision Board</h2>
+    <ul class="vision-container">
+        {% for vision in visions %}
+        <li>
+            {{ vision.vision_title}}
+            {{ vision.vision_image}}
+            {{ vision.vision_quote}}
+        <li>
+        {% endfor%}
+
+    </ul>
+
+    
+<body>
+</html>
