@@ -21,7 +21,7 @@ from datetime import timedelta
 #In this case we are using function based views, but we can also use class-based views
 
 def CreatingTask(request):
-#we take in a requesst as our parameter. This is because when a user says they want to create a file, that is definitely a request
+#we take in a requesst as our parameter. This is because when a user says they want to create a task, that is definitely a request
 #We then check that request type, is it a post? is it DELETE? etc. In this case its a POST 
     if request.method == 'POST':
 #if its a POST, we then allow the user to create their task 
@@ -38,7 +38,7 @@ def CreatingTask(request):
                 messages.error(request, "Task deadline must be a valid future date")
                 return redirect('CreatingTask')  # redirect back to the form
 #if the form has passed the checks, we can now save the form data to our db with the save() function and then send the user to the page
-#displaying the risks of tasks.
+#displaying the lists of tasks.
             form.save()
             return redirect('TaskList') 
 #so if the user request is not a POST, then just let the form be displayed on the UI.    

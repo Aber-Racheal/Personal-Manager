@@ -7,7 +7,7 @@ class CreateTask(forms.ModelForm):
    class Meta:
        #class Meta means we are defining meta data for our form
        model = Task
-       fields = ['task_title' ,'task_description', 'task_image','task_deadline' ]
+       fields = ['task_title' ,'task_description', 'task_image','task_deadline']
        
        #widgets help us further define what our form will look like and also add extra attributes like placeholders etc.
        widgets = {
